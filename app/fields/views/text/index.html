@@ -1,0 +1,8 @@
+<:Body>
+  <p class="field {#if @errors}error{/}">
+    <label>{@data.label}</label>
+    <input type="{@data.type}" value="{@data.value}" e-focusout="blurred" />
+    {#if @errors}
+      <span class="errors">{@errors.or([]).join(', ')}</span>
+    {/}
+  </p>
