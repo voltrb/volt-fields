@@ -1,0 +1,8 @@
+<:Body>
+  <p class="field {#if @errors}error{/}">
+    <label>{@data.label}</label>
+    <textarea e-focusout="blurred">{@data.value}</textarea>
+    {#if @errors}
+      <span class="errors">{@errors.or([]).join(', ')}</span>
+    {/}
+  </p>
