@@ -1,4 +1,4 @@
 module Fields
-  class TextareaController < ModelController
+  class TextareaController < TextController
   end
 end

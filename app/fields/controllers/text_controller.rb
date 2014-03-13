@@ -1,15 +1,12 @@
 module Fields
   class TextController < ModelController
-    def initialize(data)
-      super
-
-      @data = data
-
+    def index
       # Default to text fields
-      @data.locals['type'] ||= 'text'
+      @type ||= 'text'
+      @label ||= nil
 
       # Get the reactive manager for the value passed in
-      manager = @data.value.reactive_manager
+      manager = @value.reactive_manager
 
       # Find the parent reactive value that produced the value
       # (usually just model._field)
@@ -17,10 +14,6 @@ module Fields
 
       # Get the name of the field by looking at the method scope
       @field_name = manager.scope[0]
-
-      @data.locals['label'] ||= @field_name[1..-1]
-
-      @model_id = @model.object_id
 
       # Find the errors for this field
       @errors = @model.marked_errors[@field_name]

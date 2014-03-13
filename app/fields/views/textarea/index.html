@@ -1,8 +1,10 @@
 <:Body>
-  <p class="field {#if @errors}error{/}">
-    <label>{@data.label}</label>
-    <textarea e-focusout="blurred">{@data.value}</textarea>
+  <p class="form-group {#if @errors}has-error{/}">
+    {#if @label}
+      <label class="control-label">{@label}</label>
+    {/}
+    <textarea e-focusout="blurred" class="form-control">{@value}</textarea>
     {#if @errors}
-      <span class="errors">{@errors.or([]).join(', ')}</span>
+      <span class="control-label errors">{@errors.or([]).join(', ')}</span>
     {/}
   </p>
