@@ -1,5 +1,6 @@
 module Fields
   class TextController < ModelController
+    reactive_accessor :blurred
     def index
       # Default to text fields
       @type ||= 'text'
@@ -20,8 +21,10 @@ module Fields
     end
 
     # When a field goes out of focus, then we want to start checking a field
-    def blurred
+    def blur
       @model.mark_field!(@field_name)
+
+      self.blurred = true
     end
   end
 end
