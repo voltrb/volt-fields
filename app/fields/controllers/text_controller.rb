@@ -1,23 +1,37 @@
 module Fields
   class TextController < ModelController
     reactive_accessor :blurred
+    reactive_accessor :errors
     def index
       # Default to text fields
-      @type ||= 'text'
-      @label ||= nil
-
-      # Get the reactive manager for the value passed in
-      manager = @value.reactive_manager
+      if attrs.respond_to?(:type)
+        @type = attrs.type
+      else
+        @type = 'text'
+      end
 
       # Find the parent reactive value that produced the value
       # (usually just model._field)
-      @model = manager.parents[0].reactive_value
+      @model = attrs.value_parent
 
       # Get the name of the field by looking at the method scope
-      @field_name = manager.scope[0]
+      @field_name = attrs.value_last_method
 
-      # Find the errors for this field
-      @errors = @model.marked_errors[@field_name]
+    end
+
+    def label
+      label = (attrs.respond_to?(:label) && attrs.label)
+
+      unless @label
+        label = @field_name.titleize
+      end
+
+      return label
+    end
+
+    # Find the errors for this field
+    def errors
+      @model.marked_errors[@field_name]
     end
 
     # When a field goes out of focus, then we want to start checking a field

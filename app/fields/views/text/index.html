@@ -1,13 +1,13 @@
 <:Body>
-  <div class="form-group {#if @errors}has-error{#elsif blurred}has-success{/} has-feedback">
-    {#if @label}
-      <label class="control-label">{@label}</label>
+  <div class="form-group {#if errors}has-error{#elsif blurred}has-success{/} has-feedback">
+    {#if label}
+      <label class="control-label">{label}</label>
     {/}
-    <input type="{@type}" value="{@value}" e-focusout="blur" class="form-control" />
-    {#if @errors}
+    <input type="{@type}" value="{attrs.value}" e-focusout="blur" class="form-control" />
+    {#if errors}
       <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-      <span class="control-label errors">{@errors.or([]).join(', ')}</span>
+      <span class="control-label errors">{errors.or([]).join(', ')}</span>
     {#elsif blurred}
       <span class="glyphicon glyphicon-ok form-control-feedback"></span>
     {/}
-  </p>
+  </div>
