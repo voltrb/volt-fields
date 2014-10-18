@@ -1,6 +1,6 @@
 require 'fields/controllers/text_controller'
 
 module Fields
-  class TextareaController < TextController
+  class TextareaController < Volt::TextController
   end
 end

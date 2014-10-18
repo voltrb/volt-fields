@@ -1,5 +1,5 @@
 module Fields
-  class TextController < ModelController
+  class TextController < Volt::ModelController
     reactive_accessor :blurred
     reactive_accessor :errors
     def index

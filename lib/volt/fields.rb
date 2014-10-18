@@ -1,6 +1,6 @@
 require "volt/fields/version"
 
-class Volt
+module Volt
   class Fields
     # Your code goes here...
   end
