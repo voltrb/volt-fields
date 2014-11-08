@@ -18,13 +18,7 @@ module Fields
     end
 
     def label
-      label = (attrs.respond_to?(:label) && attrs.label)
-
-      unless @label
-        label = @field_name.titleize
-      end
-
-      return label
+      return attrs.label || @field_name.titleize
     end
 
     # Find the errors for this field
