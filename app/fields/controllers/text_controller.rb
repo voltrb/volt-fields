@@ -8,13 +8,14 @@ module Fields
         @type = 'text'
       end
 
-      # Find the parent reactive value that produced the value
-      # (usually just model._field)
-      @model = attrs.value_parent
-
       # Get the name of the field by looking at the method scope
       @field_name = attrs.value_last_method.gsub(/^[_]/, '')
+    end
 
+    # Find the parent reactive value that produced the value
+    # (usually just model._field)
+    def model
+      attrs.value_parent
     end
 
     def label
@@ -23,16 +24,16 @@ module Fields
 
     # Find the errors for this field
     def errors
-      @model.marked_errors[@field_name]
+      model.marked_errors[@field_name]
     end
 
     # When a field goes out of focus, then we want to start checking a field
     def blur
-      @model.mark_field!(@field_name)
+      attrs.value_parent.mark_field!(@field_name)
     end
 
     def marked
-      @model.marked_fields[@field_name]
+      model.marked_fields[@field_name]
     end
   end
 end
