@@ -3,7 +3,7 @@
     {{ if label }}
       <label class="control-label">{{ label }}</label>
     {{ end }}
-    <input type="{{ @type }}" value="{{ attrs.value }}" e-focusout="blur" class="form-control" />
+    <input type="{{ @type }}" value="{{ attrs.value }}" e-focusout="blur" class="form-control" placeholder="{{ attrs.placeholder }}" />
     {{ if errors }}
       <span class="glyphicon glyphicon-remove form-control-feedback"></span>
       <span class="control-label errors">{{ (errors || []).join(', ') }}</span>
