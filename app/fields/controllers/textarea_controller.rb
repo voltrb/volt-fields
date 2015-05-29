@@ -1,6 +1,6 @@
-require 'fields/controllers/text_controller'
+require 'fields/controllers/main_controller'
 
 module Fields
-  class TextareaController < TextController
+  class TextareaController < MainController
   end
 end
