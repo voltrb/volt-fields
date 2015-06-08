@@ -1,6 +1,8 @@
 module Fields
   class MainController < Volt::ModelController
-    def index
+    before_action :setup_field
+    
+    def setup_field
       # Default to text fields
       if attrs.respond_to?(:type)
         @type = attrs.type
@@ -11,7 +13,7 @@ module Fields
       # Get the name of the field by looking at the method scope
       @field_name = attrs.value_last_method.gsub(/^[_]/, '')
     end
-
+    
     # Find the parent reactive value that produced the value
     # (usually just model._field)
     def model

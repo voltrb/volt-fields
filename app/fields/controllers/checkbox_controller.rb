@@ -2,7 +2,14 @@ require 'fields/controllers/main_controller'
 
 module Fields
   class CheckboxController < MainController
-    def index
+    before_action :setup_field
+    
+    def setup_field
+      # Get the name of the field by looking at the method scope
+      @field_name = attrs.checked_last_method.gsub(/^[_]/, '')
+    end
+    
+    def inline
       # Get the name of the field by looking at the method scope
       @field_name = attrs.checked_last_method.gsub(/^[_]/, '')
     end
