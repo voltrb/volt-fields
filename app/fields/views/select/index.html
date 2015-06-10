@@ -4,8 +4,8 @@
       <label class="control-label">{{ label }}</label>
     {{ end }}
     <select value="{{ attrs.value }}" e-focusout="blur" class="form-control">
-      {{ attrs.options.each do |option| }}
-        <option> {{ option }}</option>
+      {{ options.each do |option| }}
+        <option value="{{ option[:value] }}"> {{ option[:label] }}</option>
       {{ end }}
     </select>
     {{ if errors }}

@@ -32,17 +32,20 @@ Then use fields as tags in your views:
 ```
 
 ### Select
+Select fields accept either an array of options, or an array of {label: '', value: ''} hashes.
+
 ```
 <:fields:select value="{{ model.role }}" options="{{ ['User', 'Admin', 'Something Else']}}"/>
 ```
     
 ### Radio
 For radio buttons, pass an options array of {label: '', value: ''} hashes.
+
 ```
 <:fields:radio value="{{ model.active }}" options="{{[{label: 'Active', value: true},{label:'Inactive', value: false}]}}"/>
 ```
 
-For inline radio buttons, use :fields:radio:inline.
+For inline radio buttons, use ```:fields:radio:inline```.
 
 ### Checkbox
 For checkboxes, use 'checked' instead of 'value' to bind the checkbox to a boolean field.
@@ -50,4 +53,4 @@ For checkboxes, use 'checked' instead of 'value' to bind the checkbox to a boole
 <:fields:checkbox checked="{{ model.active }}"/>
 ```
 
-For inline radio buttons, use :fields:radio:inline.
+For inline radio buttons, use ```:fields:radio:inline```.
