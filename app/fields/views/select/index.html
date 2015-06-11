@@ -5,7 +5,11 @@
     {{ end }}
     <select value="{{ attrs.value }}" e-focusout="blur" class="form-control">
       {{ options.each do |option| }}
-        <option value="{{ option[:value] }}"> {{ option[:label] }}</option>
+        {{ if selected?(option[:value]) }}
+          <option value="{{ option[:value] }}" selected> {{ option[:label] }}</option>
+        {{ else }}
+          <option value="{{ option[:value] }}"> {{ option[:label] }}</option>
+        {{ end }}
       {{ end }}
     </select>
     {{ if errors }}
