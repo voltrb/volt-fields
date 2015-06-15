@@ -3,13 +3,15 @@
     {{ if label }}
       <label class="control-label">{{ label }}</label>
     {{ end }}
-    <select value="{{ attrs.value }}" e-focusout="blur" class="form-control">
+    <select value="{{ attrs.value }}" class="form-control">
+      {{ if attrs.value.nil? }}
+        <option value="" selected>
+        </option>
+      {{ end }}
       {{ options.each do |option| }}
-        {{ if selected?(option[:value]) }}
-          <option value="{{ option[:value] }}" selected> {{ option[:label] }}</option>
-        {{ else }}
-          <option value="{{ option[:value] }}"> {{ option[:label] }}</option>
-        {{ end }}
+          <option value="{{ option[:value] }}">
+            {{ option[:label] }}
+          </option>
       {{ end }}
     </select>
     {{ if errors }}
