@@ -1,0 +1,13 @@
+<:Body>
+  <div class="checkbox {{ if errors }}has-error{{ elsif marked }}has-success{{ end }}">
+    <label>
+      <input type="checkbox" checked="{{ attrs.checked }}" e-focusout="blur" />
+      {{ label }}
+    </label>
+    {{ if errors }}
+      <span class="glyphicon glyphicon-remove"></span>
+      <span class="control-label errors">{{ (errors || []).join(', ') }}</span>
+    {{ elsif marked }}
+      <span class="glyphicon glyphicon-ok"></span>
+    {{ end }}
+  </div>

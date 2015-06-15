@@ -1,0 +1,21 @@
+<:Body>
+  <div class="form-group {{ if errors }}has-error{{ elsif marked }}has-success{{ end }} has-feedback">
+    {{ if label }}
+      <label class="control-label">{{ label }}</label>
+    {{ end }}
+    <select value="{{ attrs.value }}" e-focusout="blur" class="form-control">
+      {{ options.each do |option| }}
+        {{ if selected?(option[:value]) }}
+          <option value="{{ option[:value] }}" selected> {{ option[:label] }}</option>
+        {{ else }}
+          <option value="{{ option[:value] }}"> {{ option[:label] }}</option>
+        {{ end }}
+      {{ end }}
+    </select>
+    {{ if errors }}
+      <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+      <span class="control-label errors">{{ (errors || []).join(', ') }}</span>
+    {{ elsif marked }}
+      <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+    {{ end }}
+  </div>
