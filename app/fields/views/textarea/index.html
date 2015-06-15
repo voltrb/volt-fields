@@ -1,6 +1,6 @@
 <:Body>
   <div class="form-group {{ if errors }}has-error{{ elsif marked }}has-success{{ end }} has-feedback">
-    {{ if label }}
+    {{ if label.present? }}
       <label class="control-label">{{ label }}</label>
     {{ end }}
     <textarea e-focusout="blur" class="form-control" placeholder="{{ attrs.placeholder }}">{{ attrs.value }}</textarea>
