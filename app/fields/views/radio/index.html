@@ -4,9 +4,9 @@
       <div class="radio">
         <label>
           {{ if attrs.value == option[:value] }}
-            <input type="radio" name="{{ name }}" value="{{ option[:value] }}" checked/>
+            <input type="radio" checked="{{ attrs.value }}" name="{{ name }}" value="{{ option[:value] }}" checked/>
           {{ else }}
-            <input type="radio" name="{{ name }}" value="{{ option[:value] }}"/>
+            <input type="radio" checked="{{ attrs.value }}" name="{{ name }}" value="{{ option[:value] }}"/>
           {{ end }}
           {{ option[:label] }}
         </label>
