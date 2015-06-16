@@ -1,7 +1,7 @@
 <:Body>
   <div class="{{ if errors }}has-error{{ elsif marked }}has-success{{ end }} has-feedback">
     {{ options.each do |option| }}
-      <div class="radio">
+      <div class="radio-inline">
         <label>
           <input type="radio" checked="{{ attrs.value }}" name="{{ name }}" value="{{ option[:value] }}"/>
           {{ option[:label] }}
@@ -14,5 +14,4 @@
         {{ end }}
       </div>
     {{ end }}
-    {{ attrs.value }}
   </div>
