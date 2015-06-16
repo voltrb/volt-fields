@@ -31,15 +31,18 @@ Then use fields as tags in your views:
 <:fields:text value="{{ model.first_name }}"/>
 ```
 
-### Select
+### Select, Radio, and Checkbox
+Select, radio and checkbox fields make use of Volt's attribute bindings. For details, see [docs](http://docs.voltframework.com/en/docs/attribute_bindings.html) and [source](https://github.com/voltrb/volt/blob/master/lib/volt/page/bindings/attribute_binding.rb).
+
+#### Select
 Select fields accept either an array of options, or an array of {label: '', value: ''} hashes.
 
 ```
 <:fields:select value="{{ model.role }}" options="{{ ['User', 'Admin', 'Something Else']}}"/>
 ```
     
-### Radio
-For radio buttons, pass an options array of {label: '', value: ''} hashes.
+#### Radio
+Radio buttons accept either an array of options, or an array of {label: '', value: ''} hashes.
 
 ```
 <:fields:radio value="{{ model.active }}" options="{{[{label: 'Active', value: true},{label:'Inactive', value: false}]}}"/>
@@ -47,10 +50,10 @@ For radio buttons, pass an options array of {label: '', value: ''} hashes.
 
 For inline radio buttons, use ```:fields:radio:inline```.
 
-### Checkbox
+#### Checkbox
 For checkboxes, use 'checked' instead of 'value' to bind the checkbox to a boolean field.
 ```
 <:fields:checkbox checked="{{ model.active }}"/>
 ```
 
-For inline radio buttons, use ```:fields:radio:inline```.
+For inline checkboxes, use ```:fields:checkbox:inline```.
