@@ -1,5 +1,8 @@
 <:Body>
   <div class="{{ if errors }}has-error{{ elsif marked }}has-success{{ end }} has-feedback">
+    {{ if label }}
+      <label class="control-label">{{ label }}</label>
+    {{ end }}
     {{ options.each do |option| }}
       <div class="radio">
         <label>
