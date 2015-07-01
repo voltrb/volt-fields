@@ -12,7 +12,7 @@ module Fields
     end
 
     def selected?(value)
-      true if value == model.send(@field_name)
+      true if value == model_inst.send(@field_name)
     end
   end
 end
