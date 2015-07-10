@@ -6,10 +6,10 @@
     {{ options.each do |option| }}
       <div class="radio">
         <label>
-          {{ if attrs.value == option[:value] }}
-            <input type="radio" checked="{{ attrs.value }}" name="{{ name }}" value="{{ option[:value] }}" checked/>
+          {{ if selected?(option) }}
+            <input type="radio" e-click="set(option)" name="{{ name }}" value="{{ option[:value] }}" checked/>
           {{ else }}
-            <input type="radio" checked="{{ attrs.value }}" name="{{ name }}" value="{{ option[:value] }}"/>
+            <input type="radio" e-click="set(option)" name="{{ name }}" value="{{ option[:value] }}"/>
           {{ end }}
           {{ option[:label] }}
         </label>

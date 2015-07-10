@@ -12,9 +12,5 @@ module Fields
         options_hash
       end
     end
-
-    def selected?(option)
-      option[:value] == model.send(@field_name) ? true : false
-    end
   end
 end

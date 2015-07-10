@@ -3,7 +3,11 @@
     {{ options.each do |option| }}
       <div class="radio-inline">
         <label>
-          <input type="radio" checked="{{ attrs.value }}" name="{{ name }}" value="{{ option[:value] }}"/>
+          {{ if selected?(option) }}
+            <input type="radio" e-click="set(option)" name="{{ name }}" value="{{ option[:value] }}" checked/>
+          {{ else }}
+            <input type="radio" e-click="set(option)" name="{{ name }}" value="{{ option[:value] }}"/>
+          {{ end }}
           {{ option[:label] }}
         </label>
         {{ if errors }}
