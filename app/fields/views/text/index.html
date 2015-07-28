@@ -1,7 +1,7 @@
 <:Body>
   <div class="form-group {{ if errors }}has-error{{ elsif marked }}has-success{{ end }} has-feedback">
     {{ if label.present? }}
-      <label class="control-label">{{ label }}</label>
+      <label class="control-label" for="{{ attrs.name }}">{{ label }}</label>
     {{ end }}
     <input name="{{ attrs.name }}" type="{{ @type }}" value="{{ attrs.value }}" e-focusout="blur" class="form-control" placeholder="{{ attrs.placeholder }}" />
     {{ if errors }}

@@ -1,9 +1,9 @@
 <:Body>
   <div class="form-group {{ if errors }}has-error{{ elsif marked }}has-success{{ end }} has-feedback">
     {{ if label }}
-      <label class="control-label">{{ label }}</label>
+    <label class="control-label" for="{{ attrs.name }}">{{ label }}</label>
     {{ end }}
-    <select value="{{ attrs.value }}" e-focusout="blur" class="form-control">
+    <select value="{{ attrs.value }}" name="{{ attrs.name }}" e-focusout="blur" class="form-control">
       {{ options.each do |option| }}
         {{ if selected?(option[:value]) }}
           <option value="{{ option[:value] }}" selected> {{ option[:label] }}</option>
