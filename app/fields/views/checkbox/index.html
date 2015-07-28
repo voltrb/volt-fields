@@ -1,7 +1,7 @@
 <:Body>
   <div class="checkbox {{ if errors }}has-error{{ elsif marked }}has-success{{ end }}">
-    <label>
-      <input type="checkbox" checked="{{ attrs.checked }}" e-focusout="blur" />
+    <label for="{{ attrs.name }}">
+      <input type="checkbox" name="{{ attrs.name}}" checked="{{ attrs.checked }}" e-focusout="blur" />
       {{ label }}
     </label>
     {{ if errors }}
