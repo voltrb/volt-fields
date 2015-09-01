@@ -31,13 +31,23 @@ Then use fields as tags in your views:
 <:fields:text value="{{ model.first_name }}"/>
 ```
 
+or
+
+```
+<:fields:text value="{{ model.first_name }}" confirm_empty_fields="false" />
+```
+
+If you use the latter, it affects behavior when a user leaves the field (`blur` event). Any value other than `false`
+for `confirm_empty_fields` puts a check mark in a field that validates even if it is empty. If you use
+`confirm_empty_fields="false"`, no check mark will be placed in text fields with no entry on blur.
+
 ### Select
 Select fields accept either an array of options, or an array of {label: '', value: ''} hashes.
 
 ```
 <:fields:select value="{{ model.role }}" options="{{ ['User', 'Admin', 'Something Else']}}"/>
 ```
-    
+
 ### Radio
 For radio buttons, pass an options array of {label: '', value: ''} hashes.
 

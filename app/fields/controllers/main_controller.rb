@@ -3,11 +3,19 @@ module Fields
     before_action :setup_field
 
     def setup_field
+      @options ||= {}
+
       # Default to text fields
       if attrs.respond_to?(:type)
         @type = attrs.type
       else
         @type = 'text'
+      end
+
+      if attrs.respond_to?(:confirm_empty_fields)
+        puts "setting check_empty!"
+        @options ||= {confirm_empty_fields: true} # confirm fields by default
+        @options[:confirm_empty_fields] = attrs.confirm_empty_fields == "true"
       end
 
       unless attrs.value_last_method
@@ -36,7 +44,10 @@ module Fields
 
     # When a field goes out of focus, then we want to start checking a field
     def blur
-      model_inst.mark_field!(@field_name)
+      puts "value=#{attrs.value} and options=#{@options[:confirm_empty_fields]}"
+      unless @options[:confirm_empty_fields] == false && attrs.value.nil?
+        model_inst.mark_field!(@field_name)
+      end
     end
 
     def marked
