@@ -13,9 +13,8 @@ module Fields
       end
 
       if attrs.respond_to?(:confirm_empty_fields)
-        puts "setting check_empty!"
-        @options ||= {confirm_empty_fields: true} # confirm fields by default
-        @options[:confirm_empty_fields] = attrs.confirm_empty_fields == "true"
+        @options ||= {confirm_empty_fields: 'true'} # confirm fields by default
+        @options[:confirm_empty_fields] = attrs.confirm_empty_fields == "false"
       end
 
       unless attrs.value_last_method
@@ -44,9 +43,11 @@ module Fields
 
     # When a field goes out of focus, then we want to start checking a field
     def blur
-      puts "value=#{attrs.value} and options=#{@options[:confirm_empty_fields]}"
-      unless @options[:confirm_empty_fields] == false && attrs.value.nil?
-        model_inst.mark_field!(@field_name)
+      # Only place a check mark if a if :confirm_empty_fields option is present and false and
+      # if the length of the field data is non-zero. The use of try here is to prevent spurious
+      # errors from cropping up on the client side.
+      if @options[:confirm_empty_fields] != false
+        model_inst.mark_field!(@field_name) unless attrs.value.nil? || attrs.value.try(:strip).try(:length) == 0
       end
     end
 
