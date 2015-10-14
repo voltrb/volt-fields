@@ -26,7 +26,9 @@ module Fields
     end
 
     def label
-      attrs.label || @field_name.titleize
+      unless ['false','False'].include?(attrs.label)
+        attrs.label || @field_name.titleize
+      end
     end
 
     # Find the errors for this field
