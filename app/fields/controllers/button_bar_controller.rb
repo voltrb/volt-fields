@@ -22,5 +22,13 @@ module Fields
     def button_class
       attrs.button_class || 'btn-default'
     end
+
+    def selected_button_class
+      attrs.selected_button_class || attrs.button_class || 'btn-default'
+    end
+
+    def active_class
+      attrs.active_class || 'active'
+    end
   end
 end
