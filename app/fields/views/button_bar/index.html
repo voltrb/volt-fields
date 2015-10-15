@@ -6,7 +6,7 @@
     <div class="btn-group" role="group">
       {{ options.each do |option| }}
         {{ if selected?(option[:value]) }}
-          <button type="button" class="btn {{ selected_button_class }} active" e-click="set_val(option[:value])"> {{ option[:label] }}</option>
+          <button type="button" class="btn {{ selected_button_class }} {{ active_class }}" e-click="set_val(option[:value])"> {{ option[:label] }}</option>
         {{ else }}
           <button type="button" class="btn {{ button_class }}" e-click="set_val(option[:value])"> {{ option[:label] }}</option>
         {{ end }}
