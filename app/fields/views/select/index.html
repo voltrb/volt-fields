@@ -3,7 +3,7 @@
     {{ if label }}
       <label class="control-label">{{ label }}</label>
     {{ end }}
-    <select value="{{ attrs.value }}" class="form-control">
+    <select value="{{ attrs.value }}" e-change="blur" class="form-control">
       {{ if attrs.value.nil? }}
         <option value="" selected>
         </option>

@@ -1,7 +1,7 @@
 require 'fields/controllers/main_controller'
 
 module Fields
-  class ButtonBarController < MainController
+  class ButtonGroupController < MainController
     def options
       if attrs.options[0].is_a?(Hash)
         options = attrs.options
