@@ -1,15 +1,8 @@
 require 'fields/controllers/main_controller'
+require 'fields/controllers/select_radio_controller'
 
 module Fields
-  class ButtonGroupController < MainController
-    def options
-      if attrs.options[0].is_a?(Hash)
-        options = attrs.options
-      else
-        options = attrs.options.collect { |option| { value: option, label: option } }
-      end
-      options
-    end
+  class ButtonGroupController < SelectRadioController
 
     def selected?(value)
       true if value == model_inst.send(@field_name)
