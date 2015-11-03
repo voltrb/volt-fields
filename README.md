@@ -12,9 +12,10 @@ Currently supported control types:
 * Select
 * Radio
 * Checkbox
+* Button groups / bar
 
 ## How to Use
-### Setup
+#### Setup
 Include in your gemfile:
 
 ```
@@ -26,20 +27,46 @@ Then use fields as tags in your views:
 <:fields:text value="{{ model.first_name }}"/>
 ```
 
-### Text and Textarea
+#### Options common to all controls
+Attribute | Description | Required/Optional | Default
+----- | ----- | -----
+value | The model field to bind to. | Required | None |
+label | A label for the field. Pass 'false' for no label. | Optional | Name of the field on the model.
+
+### Control Types
+
+#### Text and Textarea
 ```
 <:fields:text value="{{ model.first_name }}"/>
 ```
+##### Alternative formats
+* <:fields:textarea />
 
-### Select
-Select fields accept either an array of options, or an array of {label: '', value: ''} hashes.
+#### Select
+Select fields accept either an array of options, or an array of {label: '', value: ''} hashes. You can pass promises and the options will be populated when the promise resolves.
 
 ```
 <:fields:select value="{{ model.role }}" options="{{ ['User', 'Admin', 'Something Else']}}"/>
 ```
-    
-### Radio
-For radio buttons, pass an options array of {label: '', value: ''} hashes.
+
+#### Button Groups / Bar
+[Button groups](http://getbootstrap.com/components/#btn-groups) function just like select boxes, but provide a switch-like interface.
+
+```
+<:fields:button_group selected_button_class="btn-primary" value="{{ model.status }}" options="{{ MyModel.something_that_returns_a_promise }}" />
+```
+
+ Attribute | Description | Default
+ ------ | ------ | -------
+ button_class | Class to apply to all buttons (unless selected_button_class is also supplied) (i.e. btn-default, btn-primary) | 'btn-default'
+ active_class | Class applied to the selected option (in addition to selected_button_class (i.e. 'active') | 'active'
+ selected_button_class | Class to apply to the selected button (i.e. btn-default, btn-primary) | 'btn-default'
+
+ ##### Alternative formats
+ * <:fields:button_group:justified />
+
+#### Radio
+Radio buttons accept either an array of options, or an array of {label: '', value: ''} hashes.
 
 ```
 <:fields:radio value="{{ model.active }}" options="{{[{label: 'Active', value: true},{label:'Inactive', value: false}]}}"/>
@@ -47,10 +74,11 @@ For radio buttons, pass an options array of {label: '', value: ''} hashes.
 
 For inline radio buttons, use ```:fields:radio:inline```.
 
-### Checkbox
+#### Checkbox
 For checkboxes, use 'checked' instead of 'value' to bind the checkbox to a boolean field.
 ```
 <:fields:checkbox checked="{{ model.active }}"/>
 ```
 
-For inline radio buttons, use ```:fields:radio:inline```.
+##### Alternative formats
+* <:fields:checkbox:inline />

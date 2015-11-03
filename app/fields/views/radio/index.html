@@ -1,24 +1,24 @@
 <:Body>
   <div class="{{ if errors }}has-error{{ elsif marked }}has-success{{ end }} has-feedback">
-    {{ attrs.options.each do |option| }}
-      <div class="radio">
-        {{ if checked?(option['value']) }}
-          <label>
-            <input type="radio" e-click="set_field(option['value'])" name="{{ @field_name }}_radio" value="{{option['value']}}" checked/>
-            {{ option['label'] }}
-          </label>
-          {{ if errors }}
-            <span class="glyphicon glyphicon-remove"></span>
-            <span class="control-label errors">{{ (errors || []).join(', ') }}</span>
-          {{ elsif marked }}
-            <span class="glyphicon glyphicon-ok"></span>
-          {{ end }}
-        {{ else }}
-          <label>
-            <input type="radio" e-click="set_field(option['value'])" name="{{ @field_name }}_radio" value="{{option['value']}}"/>
-            {{ option['label'] }}
-          </label>
-        {{ end }}
+    {{ if label }}
+      <label class="control-label">{{ label }}</label>
     {{ end }}
-    </div>
+    {{ options.each do |option| }}
+      <div class="radio">
+        <label>
+          {{ if selected?(option) }}
+            <input type="radio" e-click="set(option)" name="{{ name }}" value="{{ option[:value] }}" checked/>
+          {{ else }}
+            <input type="radio" e-click="set(option)" name="{{ name }}" value="{{ option[:value] }}"/>
+          {{ end }}
+          {{ option[:label] }}
+        </label>
+        {{ if errors }}
+          <span class="glyphicon glyphicon-remove"></span>
+          <span class="control-label errors">{{ (errors || []).join(', ') }}</span>
+        {{ elsif marked }}
+          <span class="glyphicon glyphicon-ok"></span>
+        {{ end }}
+      </div>
+    {{ end }}
   </div>

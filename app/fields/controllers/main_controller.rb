@@ -1,6 +1,7 @@
 module Fields
   class MainController < Volt::ModelController
     before_action :setup_field
+    reactive_accessor :options
 
     def setup_field
       # Default to text fields
@@ -26,12 +27,18 @@ module Fields
     end
 
     def label
-      attrs.label || @field_name.titleize
+      unless ['false','False'].include?(attrs.label)
+        attrs.label || @field_name.titleize
+      end
     end
 
     # Find the errors for this field
     def errors
       model_inst.marked_errors[@field_name]
+    end
+
+    def field_name
+      @field_name
     end
 
     # When a field goes out of focus, then we want to start checking a field

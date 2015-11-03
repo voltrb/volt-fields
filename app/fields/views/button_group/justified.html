@@ -1,0 +1,23 @@
+<:Body>
+  <div class="form-group {{ if errors }}has-error{{ elsif marked }}has-success{{ end }} has-feedback">
+    {{ if label }}
+      <label class="control-label">{{ label }}</label>
+    {{ end }}
+    <div class="btn-group btn-group-justified" role="group">
+       <div class="btn-group" role="group">
+          {{ options.each do |option| }}
+            {{ if selected?(option[:value]) }}
+              <button type="button" class="btn {{ selected_button_class }} {{ active_class }}" e-click="set_val(option[:value])"> {{ option[:label] }}</option>
+            {{ else }}
+              <button type="button" class="btn {{ button_class }}" e-click="set_val(option[:value])"> {{ option[:label] }}</option>
+            {{ end }}
+          {{ end }}
+        </div>
+    </div>
+    {{ if errors }}
+      <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+      <span class="control-label errors">{{ (errors || []).join(', ') }}</span>
+    {{ elsif marked }}
+      <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+    {{ end }}
+  </div>
