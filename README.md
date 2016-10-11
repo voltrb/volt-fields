@@ -28,10 +28,12 @@ Then use fields as tags in your views:
 ```
 
 #### Options common to all controls
-Attribute | Description | Required/Optional | Default
------ | ----- | -----
-value | The model field to bind to. | Required | None |
-label | A label for the field. Pass 'false' for no label. | Optional | Name of the field on the model.
+
+| Attribute       | Default       | Description                                                                                                   |
+| --------------- | ------------- | ------------------------------------------------------------------------------------------------------------- |
+| button_class    | 'btn-default' | Class to apply to all buttons (unless selected_button_class is also supplied) (i.e. btn-default, btn-primary) |
+| active_class    | 'active'      | Class applied to the selected option (in addition to selected_button_class (i.e. 'active')                    |
+| selected_button | 'btn-default' | Class to apply to the selected button (i.e. btn-default, btn-primary)                                         |
 
 ### Control Types
 
